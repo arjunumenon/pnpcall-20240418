@@ -22,8 +22,8 @@ export const workflowApp = new ConversationBot({
   },
   command: {
     enabled: true,
-    commands: [new HelloWorldCommandHandler()],
-    ssoCommands: [new GetM365Information()],
+    commands: [new HelloWorldCommandHandler(), new GetM365Information()],
+
   },
   cardAction: {
     enabled: true,
