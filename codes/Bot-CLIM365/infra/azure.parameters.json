@@ -1,21 +1,33 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "resourceBaseName": {
-        "value": "workflow${{RESOURCE_SUFFIX}}"
-      },
-      "botAadAppClientId": {
-        "value": "${{BOT_ID}}"
-      },
-      "botAadAppClientSecret": {
-        "value": "${{SECRET_BOT_PASSWORD}}"
-      },
-      "webAppSKU": {
-        "value": "B1"
-      },
-      "botDisplayName": {
-        "value": "Bot-CLIM365"
-      }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "resourceBaseName": {
+      "value": "clibot${{RESOURCE_SUFFIX}}"
+    },
+    "botAadAppClientId": {
+      "value": "${{BOT_ID}}"
+    },
+    "botAadAppClientSecret": {
+      "value": "${{SECRET_BOT_PASSWORD}}"
+    },
+    "webAppSKU": {
+      "value": "B1"
+    },
+    "botDisplayName": {
+      "value": "${{TEAMS_APP_NAME}} - ${{APP_NAME_SUFFIX}}"
+    },
+    "m365ClientId": {
+      "value": "${{AAD_APP_CLIENT_ID}}"
+    },
+    "m365ClientSecret": {
+      "value": "${{SECRET_AAD_APP_CLIENT_SECRET}}"
+    },
+    "m365TenantId": {
+      "value": "${{AAD_APP_TENANT_ID}}"
+    },
+    "m365OauthAuthorityHost": {
+      "value": "${{AAD_APP_OAUTH_AUTHORITY_HOST}}"
     }
   }
+}

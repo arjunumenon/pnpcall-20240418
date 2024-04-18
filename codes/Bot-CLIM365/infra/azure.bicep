@@ -19,6 +19,14 @@ param serverfarmsName string = resourceBaseName
 param webAppName string = resourceBaseName
 param location string = resourceGroup().location
 
+// For enabling SSO
+param m365ClientId string
+param m365TenantId string
+param m365OauthAuthorityHost string
+param m365ApplicationIdUri string = 'api://botid-${botAadAppClientId}'
+@secure()
+param m365ClientSecret string
+
 // Compute resources for your Web App
 resource serverfarm 'Microsoft.Web/serverfarms@2021-02-01' = {
   kind: 'app'
@@ -46,7 +54,7 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
         }
         {
           name: 'WEBSITE_NODE_DEFAULT_VERSION'
-          value: '~18' // Set NodeJS version to 18.x for your site
+          value: '~14.20.0' // Set NodeJS version to 18.x for your site
         }
         {
           name: 'RUNNING_ON_AZURE'
@@ -74,6 +82,21 @@ module azureBotRegistration './botRegistration/azurebot.bicep' = {
     botAadAppClientId: botAadAppClientId
     botAppDomain: webApp.properties.defaultHostName
     botDisplayName: botDisplayName
+  }
+}
+
+resource webAppSettings 'Microsoft.Web/sites/config@2021-02-01' = {
+  name: '${webAppName}/appsettings'
+  properties: {
+    M365_CLIENT_ID: m365ClientId
+    M365_CLIENT_SECRET: m365ClientSecret
+    INITIATE_LOGIN_ENDPOINT: uri('https://${webApp.properties.defaultHostName}', 'auth-start.html')
+    M365_AUTHORITY_HOST: m365OauthAuthorityHost
+    M365_TENANT_ID: m365TenantId
+    M365_APPLICATION_ID_URI: m365ApplicationIdUri
+    BOT_ID: botAadAppClientId
+    BOT_PASSWORD: botAadAppClientSecret
+    RUNNING_ON_AZURE: '1'
   }
 }
 
