@@ -9,7 +9,7 @@ import { CardData } from "../cardModels";
  * with an Adaptive Card if the user types the `triggerPatterns`.
  */
 export class HelloWorldCommandHandler implements TeamsFxBotCommandHandler {
-  triggerPatterns: TriggerPatterns = "helloWorld";
+  triggerPatterns: TriggerPatterns = "help";
 
   async handleCommandReceived(
     context: TurnContext,
@@ -19,8 +19,12 @@ export class HelloWorldCommandHandler implements TeamsFxBotCommandHandler {
 
     // Render your adaptive card for reply message
     const cardData: CardData = {
-      title: "Your Hello World Bot is Running",
-      body: "Congratulations! Your hello world bot is running. Click the button below to trigger an action.",
+      title: "Get Information Bot - CLI for Microsoft 365",
+      body: `This is a bot which will retrieve information from your tenant. You can use the following commands to interact with the bot:
+      
+      getInfo https://aum365.sharepoint.com/sites/PowerAutomateDev
+      getManager       
+      `,
     };
 
     const cardJson = AdaptiveCards.declare(helloWorldCard).render(cardData);

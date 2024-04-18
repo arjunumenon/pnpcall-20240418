@@ -20,6 +20,11 @@ export async function getSiteTitle(request: HttpRequest, context: InvocationCont
         };
     }
 
+    const requestData: any = await request.json();
+    const siteUrl = requestData.siteUrl;
+
+    // const siteUrl = "https://aum365.sharepoint.com/sites/PowerAutomateDev";
+
     const creds: TokenCredential[] = [
         new DefaultAzureCredential(),
         new AzureCliCredential()
@@ -52,7 +57,7 @@ export async function getSiteTitle(request: HttpRequest, context: InvocationCont
     }
 
     const site = await executeCommand("spo web get", {
-        url: "https://aum365.sharepoint.com/sites/M365CLI",
+        url: siteUrl,
     });
     const siteInfo = JSON.parse(site.stdout);
 
