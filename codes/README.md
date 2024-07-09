@@ -1,6 +1,6 @@
 # SESSION NAME
 
-This repository has the codes which is used by Arjun Menon in SESSION for the session **TOPIC NAME**
+This repository has the artifacts which is used by Arjun Menon in PnP Community Call happened on a8 April 2024 for the session **CLI for Microsoft 365 - Advanced usage**
 
 ## Pre-requisites
 

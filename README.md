@@ -1,10 +1,10 @@
 # SESSION NAME
 
-This repository has the artifacts which is used by Arjun Menon in SESSION for the session **TOPIC NAME**
+This repository has the artifacts which is used by Arjun Menon in PnP Community Call happened on a8 April 2024 for the session **CLI for Microsoft 365 - Advanced usage**
 
 ## Session Information
 
-Session Link : [Session Name](https://arjunumenon.com)
+Session Link : [CLI for Microsoft 365 - Advanced usage](https://www.youtube.com/watch?v=LkPImuS42Vg&ab_channel=MicrosoftCommunityLearning)
 
 ## Session Abstract
 
